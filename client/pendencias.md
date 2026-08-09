@@ -28,14 +28,23 @@ cliente real substitua este conteúdo.
 - [x] Imagem de Open Graph reaproveitada (`og-default.png` compartilhada)
 - [x] Direção visual **"Comercial de Alta Conversão"** aprovada e
       implementada (auditoria + 4 direções propostas na conversa; ver
-      histórico) — navy (`#0F172A`) para texto/autoridade, verde
-      (`#16A34A`) como cor de ação isolada (CTA, selo de verificação,
-      acentos), `raio: lg`. Componentes tocados nesta iteração:
-      `Avatar` (selo de verificado), `Hero` (chips de credenciais
-      cedo), `OfertaPrincipal` (sombra colorida, sem repetir
-      credenciais), `ProvasSociais` (grid de cartões), `Button`/
-      `LinkRow`/`CtasSecundarios` (CTA com hover elevado, chips com
-      ícone). Screenshots mobile (390px) e desktop conferidos.
+      histórico) — estrutura de página: `Avatar` (selo de verificado),
+      `Hero` (chips de credenciais cedo), `OfertaPrincipal` (sombra
+      colorida, sem repetir credenciais), `ProvasSociais` (grid de
+      cartões), `Button`/`LinkRow`/`CtasSecundarios` (CTA com hover
+      elevado, chips com ícone). Essa estrutura continua valendo.
+- [x] Paleta trocada para **tema escuro + roxo** a partir de referência
+      real (ver `client/referencias/README.md`) — só o `tema` mudou,
+      estrutura de seções preservada (decisão explícita: não adotar a
+      estrutura multi-seção da referência, fora do escopo do produto).
+      `corFundo: #0B0B10`, `corSuperficie: #161320`,
+      `corPrimaria: #8B5CF6`, `corTexto: #F5F3FF`,
+      `corTextoSecundario: #8B899C`. Exigiu também corrigir
+      `lib/theme.ts`: a cor do texto do botão principal agora é
+      calculada pela luminância da própria `corPrimaria` (WCAG), não
+      mais aproximada a partir de `corFundo` — a fórmula antiga só
+      funcionava em tema claro. Screenshots mobile (390px) e desktop
+      conferidos nos dois temas.
 - [x] Avatar de demonstração roxo destoa da paleta navy/verde — quando
       um cliente real assumir o repositório, a foto real substitui isso
       automaticamente (não é um problema a corrigir agora).

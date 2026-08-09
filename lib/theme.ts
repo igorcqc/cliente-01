@@ -42,16 +42,35 @@ export function hexToRgbChannels(hex: string): string {
   return `${r} ${g} ${b}`;
 }
 
+/**
+ * Luminância relativa (fórmula WCAG) de uma cor hex, 0 (preto) a 1
+ * (branco) — usada só para decidir se o texto sobre a cor primária deve
+ * ser claro ou escuro (ver `getThemeCssVariables`).
+ */
+function relativeLuminance(hex: string): number {
+  const [r = 0, g = 0, b = 0] = hexToRgbChannels(hex)
+    .split(" ")
+    .map((channel) => {
+      const c = Number(channel) / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
 export function getThemeCssVariables(tema: Tema): ThemeCssVariables {
   return {
     "--color-background-rgb": hexToRgbChannels(tema.corFundo),
     "--color-surface-rgb": hexToRgbChannels(tema.corSuperficie),
     "--color-primary-rgb": hexToRgbChannels(tema.corPrimaria),
-    // Texto sobre o botão primário: usamos a cor de fundo do site como
-    // aproximação de contraste (convenção comum: fundo claro + primária
-    // saturada -> texto claro sobre o botão). Não há campo dedicado no
-    // schema para isto nesta v1.
-    "--color-primary-foreground-rgb": hexToRgbChannels(tema.corFundo),
+    // Texto sobre o botão primário: calculado pela luminância relativa da
+    // própria cor primária (WCAG), não mais aproximado a partir de
+    // `corFundo`. A abordagem antiga assumia implicitamente "fundo claro
+    // + primária saturada" — funcionava em temas claros, mas gerava texto
+    // escuro sobre botão em qualquer tema escuro (fundo escuro usado como
+    // "cor clara" do texto). Calcular a partir da própria cor do botão
+    // funciona nos dois casos, sem precisar de um campo novo no schema.
+    "--color-primary-foreground-rgb":
+      relativeLuminance(tema.corPrimaria) > 0.5 ? "17 17 17" : "255 255 255",
     "--color-text-rgb": hexToRgbChannels(tema.corTexto),
     "--color-text-secondary-rgb": hexToRgbChannels(tema.corTextoSecundario),
     "--color-border-rgb": hexToRgbChannels(tema.corTextoSecundario),

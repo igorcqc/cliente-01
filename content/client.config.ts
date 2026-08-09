@@ -101,15 +101,16 @@ export const clientConfig: ClientConfig = {
     { plataforma: "whatsapp", label: "WhatsApp (exemplo)", url: "https://example.com/whatsapp" },
   ],
 
-  // Direção visual "Comercial de Alta Conversão" (aprovada em
-  // client/pendencias.md): navy para texto/autoridade, verde como cor
-  // de ação isolada (CTA, selos, acentos) — não decoração espalhada.
+  // Tema escuro + roxo (a pedido do responsável pelo projeto, a partir de
+  // uma referência visual real — ver client/referencias/) — mantém a
+  // estrutura de página da Direção "Comercial de Alta Conversão"
+  // (client/pendencias.md), só troca a paleta.
   tema: {
-    corFundo: "#FFFFFF",
-    corSuperficie: "#F1F5F9",
-    corPrimaria: "#16A34A",
-    corTexto: "#0F172A",
-    corTextoSecundario: "#475569",
+    corFundo: "#0B0B10",
+    corSuperficie: "#161320",
+    corPrimaria: "#8B5CF6",
+    corTexto: "#F5F3FF",
+    corTextoSecundario: "#8B899C",
     raio: "lg",
     estiloBotao: "solid",
     fonteTitulo: "sans",
