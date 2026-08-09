@@ -33,6 +33,16 @@ body {
   background-color: rgb(var(--color-background-rgb));
   color: rgb(var(--color-text-rgb));
   font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Seleção de texto na cor primária do cliente — detalhe de acabamento
+ * barato de aplicar (puro CSS) e que reforça a marca em qualquer ponto
+ * da página, não só nos elementos interativos. */
+::selection {
+  background-color: rgb(var(--color-primary-rgb) / 0.25);
+  color: rgb(var(--color-text-rgb));
 }
 
 /* Foco visível e consistente em toda a aplicação (acessibilidade básica). */

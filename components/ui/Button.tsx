@@ -43,7 +43,13 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const sizeClasses =
-    size === "lg" ? "text-base py-4 px-6 font-semibold" : "text-sm py-3 px-4 font-medium";
+    size === "lg" ? "text-base py-4 px-6 font-bold" : "text-sm py-3 px-4 font-semibold";
+  // Direção "Comercial de Alta Conversão": o CTA principal ganha um leve
+  // "levante" + sombra mais forte no hover — reforço tátil de que é o
+  // elemento clicável dominante da página. `prefers-reduced-motion`
+  // continua desativando a transição via regra global (app/globals.css).
+  const principalClasses =
+    kind === "principal" ? "hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0" : "";
 
   return (
     <a
@@ -54,15 +60,20 @@ export function Button({
       onClick={() =>
         trackClick({ id: trackingId, event: trackingEvent, kind, url: href })
       }
-      className={`inline-flex w-full items-center justify-center rounded-theme transition-opacity duration-150 ${BOTAO_ESTILO_CLASSES[estilo]} ${sizeClasses} ${className}`}
+      className={`inline-flex w-full items-center justify-center gap-2 rounded-theme transition-all duration-150 ${BOTAO_ESTILO_CLASSES[estilo]} ${sizeClasses} ${principalClasses} ${className}`}
       {...rest}
     >
       {icone && (
-        <span aria-hidden="true" className="mr-2">
+        <span aria-hidden="true" className="mr-0.5">
           {icone}
         </span>
       )}
       {children}
+      {kind === "principal" && (
+        <span aria-hidden="true" className="text-lg leading-none">
+          →
+        </span>
+      )}
     </a>
   );
 }

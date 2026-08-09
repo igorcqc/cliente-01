@@ -23,9 +23,22 @@ cliente real substitua este conteúdo.
 ## Visual
 
 - [x] Avatar de demonstração reaproveitado (`avatar-demo.svg`) — não é
-      foto real de ninguém
+      foto real de ninguém; segue com a cor roxa original do asset, que
+      não acompanha o tema (limitação do SVG estático, não do tema)
 - [x] Imagem de Open Graph reaproveitada (`og-default.png` compartilhada)
-- [x] Tema de cores definido (azul, alinhado ao nicho de tráfego pago)
+- [x] Direção visual **"Comercial de Alta Conversão"** aprovada e
+      implementada (auditoria + 4 direções propostas na conversa; ver
+      histórico) — navy (`#0F172A`) para texto/autoridade, verde
+      (`#16A34A`) como cor de ação isolada (CTA, selo de verificação,
+      acentos), `raio: lg`. Componentes tocados nesta iteração:
+      `Avatar` (selo de verificado), `Hero` (chips de credenciais
+      cedo), `OfertaPrincipal` (sombra colorida, sem repetir
+      credenciais), `ProvasSociais` (grid de cartões), `Button`/
+      `LinkRow`/`CtasSecundarios` (CTA com hover elevado, chips com
+      ícone). Screenshots mobile (390px) e desktop conferidos.
+- [x] Avatar de demonstração roxo destoa da paleta navy/verde — quando
+      um cliente real assumir o repositório, a foto real substitui isso
+      automaticamente (não é um problema a corrigir agora).
 
 ## Técnico
 

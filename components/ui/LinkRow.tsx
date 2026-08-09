@@ -15,17 +15,18 @@ interface LinkRowProps {
 }
 
 /**
- * Linha de link minimalista para caminhos secundários.
+ * Linha de link para caminhos secundários, em formato de "chip"
+ * (ícone circular + texto + seta) — visivelmente mais leve que o CTA
+ * principal (`Button`), mas com peso próprio suficiente para não parecer
+ * um link de rodapé esquecido (Direção "Comercial de Alta Conversão").
  *
  * Por que existe (em vez de reaproveitar `Button`): `Button` sempre
- * renderiza um bloco com preenchimento/borda ligado ao estilo de tema do
- * cliente (`solid`/`outline`/`soft`) — correto para o CTA principal, mas
- * pesado demais para uma lista de caminhos secundários, que precisa
- * claramente perder para o CTA principal em peso visual (ver
- * docs/VISUAL-DEMONSTRATIVO.md). `LinkRow` reaproveita a mesma lógica de
- * rastreamento e de abertura de link (`trackClick`, `novaAbaProps`) que
- * `Button` já usa — só a apresentação é diferente: texto + seta, sem
- * preenchimento nem borda ao redor de cada item.
+ * renderiza um bloco ligado ao estilo de tema do cliente
+ * (`solid`/`outline`/`soft`) — correto para o CTA principal, mas
+ * `LinkRow` precisa de um tratamento fixo e sempre mais discreto que
+ * qualquer configuração de `estiloBotao`. `LinkRow` reaproveita a mesma
+ * lógica de rastreamento e de abertura de link (`trackClick`,
+ * `novaAbaProps`) que `Button` já usa — só a apresentação muda.
  */
 export function LinkRow({
   href,
@@ -43,18 +44,17 @@ export function LinkRow({
       data-cta-id={trackingId}
       data-cta-kind={kind}
       onClick={() => trackClick({ id: trackingId, event: trackingEvent, kind, url: href })}
-      className="group flex min-h-[44px] items-center justify-between gap-3 py-3 text-text transition-colors hover:text-primary"
+      className="group flex min-h-[52px] items-center gap-3 rounded-theme border border-border bg-background px-4 py-3 text-text transition-colors hover:border-primary hover:bg-surface"
     >
-      <span className="flex flex-col">
-        <span className="flex items-center gap-2 text-sm font-medium">
-          {icone && (
-            <span aria-hidden="true" className="text-base leading-none">
-              {icone}
-            </span>
-          )}
-          {children}
-        </span>
-        {descricao && <span className="mt-0.5 text-xs text-text-secondary">{descricao}</span>}
+      <span
+        aria-hidden="true"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-base leading-none text-primary"
+      >
+        {icone ?? "→"}
+      </span>
+      <span className="flex min-w-0 flex-1 flex-col text-left">
+        <span className="text-sm font-semibold leading-snug">{children}</span>
+        {descricao && <span className="mt-0.5 truncate text-xs text-text-secondary">{descricao}</span>}
       </span>
       <span
         aria-hidden="true"

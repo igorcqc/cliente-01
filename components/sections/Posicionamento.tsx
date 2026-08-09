@@ -16,8 +16,8 @@ interface PosicionamentoProps {
 export function Posicionamento({ identidade, posicionamento }: PosicionamentoProps) {
   return (
     <Section className="pb-10 pt-2">
-      <p className="text-base leading-relaxed text-text">{identidade.posicionamento}</p>
-      <div className="mt-5 border-l-2 border-primary pl-4">
+      <p className="text-base font-medium leading-relaxed text-text">{identidade.posicionamento}</p>
+      <div className="mt-5 border-l-[3px] border-primary pl-4">
         <p className="text-sm leading-relaxed text-text-secondary">
           <span className="font-semibold text-text">Para quem: </span>
           {posicionamento.publico}

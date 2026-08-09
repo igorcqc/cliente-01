@@ -7,19 +7,20 @@ interface CtasSecundariosProps {
 }
 
 /**
- * Caminhos secundários — uma lista de texto discreta (`LinkRow`), sem
- * preenchimento nem borda ao redor de cada item, para nunca competir em
- * peso visual com o CTA principal (`Button`, em `OfertaPrincipal`).
+ * Caminhos secundários — chips (`LinkRow`) empilhados com espaçamento
+ * próprio, para nunca competir em peso visual com o CTA principal
+ * (`Button`, em `OfertaPrincipal`), mas sem parecer uma lista de rodapé
+ * esquecida.
  */
 export function CtasSecundarios({ ctas }: CtasSecundariosProps) {
   if (ctas.length === 0) return null;
 
   return (
     <Section className="py-6">
-      <h2 className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-text-secondary">
+      <h2 className="mb-3 text-[11px] font-bold uppercase tracking-wider text-text-secondary">
         Outros caminhos
       </h2>
-      <ul className="divide-y divide-border">
+      <ul className="flex flex-col gap-2.5">
         {ctas.map((cta) => (
           <li key={cta.id}>
             <LinkRow

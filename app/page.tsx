@@ -12,10 +12,12 @@ import { getClientConfig } from "@/lib/getClientConfig";
  * diretamente — tudo vem de `getClientConfig()`, que valida o conteúdo
  * contra o schema Zod antes de chegar aqui.
  *
- * Ordem deliberada (ver docs/VISUAL-DEMONSTRATIVO.md): quem é a expert →
- * quem ela ajuda e a transformação → a oferta (com os sinais de
- * autoridade logo acima do CTA, como último reforço de confiança) →
- * provas sociais → caminhos secundários → redes → rodapé.
+ * Ordem deliberada (Direção "Comercial de Alta Conversão" — ver
+ * `client/pendencias.md`): quem é a expert, já com sinais de
+ * credibilidade cedo (avatar verificado + chips de credenciais no Hero)
+ * → quem ela ajuda e a transformação → a oferta (sem repetir
+ * credenciais, só oferta + CTA) → provas sociais → caminhos secundários
+ * → redes → rodapé.
  */
 export default function Home() {
   const config = getClientConfig();
@@ -24,11 +26,7 @@ export default function Home() {
     <main>
       <Hero identidade={config.identidade} posicionamento={config.posicionamento} />
       <Posicionamento identidade={config.identidade} posicionamento={config.posicionamento} />
-      <OfertaPrincipal
-        oferta={config.oferta}
-        estiloBotao={config.tema.estiloBotao}
-        credenciais={config.identidade.credenciais}
-      />
+      <OfertaPrincipal oferta={config.oferta} estiloBotao={config.tema.estiloBotao} />
       <ProvasSociais provas={config.provasSociais} />
       <CtasSecundarios ctas={config.ctasSecundarios} />
       <RedesSociais redes={config.redesSociais} />
