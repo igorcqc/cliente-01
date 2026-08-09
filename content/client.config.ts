@@ -13,74 +13,68 @@ import type { ClientConfig } from "@/lib/validation/schema";
  * docs/CORRECOES-FUNDACAO.md, item C1, para o histórico do bug que isso
  * corrige).
  *
- * Neste repositório-base, o conteúdo abaixo é a mesma demonstração
- * (expert fictícia "Marina Dantas", claramente marcada em
- * `demonstracao.ehDemonstracao`) que aparece em `client.example.ts` —
- * mas como um objeto próprio, não uma referência compartilhada.
- *
- * Ao criar um cliente real a partir deste template:
- *   1. copie `templates/client.config.template.ts` para cá (sobrescrevendo
- *      todo o conteúdo abaixo);
- *   2. preencha com os dados reais do cliente;
- *   3. rode `npm run validate` para confirmar que o schema aceita o conteúdo;
- *   4. mude `demonstracao.ehDemonstracao` para `false`.
- *
- * Veja docs/ONBOARDING-CLIENTE.md para o passo a passo completo.
+ * ⚠️ Cliente fictício de demonstração. "Rafael Andrade" e "Andrade
+ * Tráfego Pago" não são pessoa/negócio reais — foram inventados a
+ * pedido do responsável pelo projeto para validar o fluxo completo de
+ * onboarding descrito em `docs/ONBOARDING-CLIENTE.md`. Ver
+ * `client/pendencias.md` para o que muda quando um cliente real assumir
+ * este repositório.
  */
 export const clientConfig: ClientConfig = {
   demonstracao: {
     ehDemonstracao: true,
     aviso:
-      "Esta é uma página de demonstração do Bio que Vende. 'Marina Dantas' é uma expert fictícia — todos os dados, depoimentos e resultados são exemplos.",
+      "Esta é uma página de demonstração do Bio que Vende. 'Rafael Andrade' é um gestor de tráfego pago fictício — todos os dados, depoimentos e resultados são exemplos.",
   },
 
   identidade: {
-    nome: "Marina Dantas",
-    nomeDaMarca: "Marina Dantas Mentoria",
+    nome: "Rafael Andrade",
+    nomeDaMarca: "Andrade Tráfego Pago",
     avatarUrl: "/images/client/avatar-demo.svg",
-    avatarAlt: "Foto ilustrativa de perfil de Marina Dantas (expert fictícia de demonstração)",
+    avatarAlt: "Foto ilustrativa de perfil de Rafael Andrade (gestor de tráfego pago fictício de demonstração)",
     posicionamento:
-      "Ajudo consultoras autônomas a saírem da troca de hora por dinheiro e estruturarem uma mentoria em grupo previsível, sem precisar aparecer o tempo todo nas redes.",
+      "Ajudo donos de e-commerce e negócios locais a escalarem vendas com tráfego pago previsível, sem depender de sorte no algoritmo.",
     credenciais: [
-      "Exemplo: +8 anos de experiência (fictício)",
-      "Exemplo: Metodologia própria (fictício)",
+      "Exemplo: +6 anos gerenciando campanhas de Meta Ads e Google Ads (fictício)",
+      "Exemplo: Mais de R$ 2 milhões em verba de mídia gerenciada (fictício)",
     ],
   },
 
   posicionamento: {
-    publico: "Consultoras autônomas que já têm clientes, mas vivem no limite da própria agenda.",
+    publico:
+      "Donos de e-commerce e negócios locais que já investem em tráfego pago, mas não conseguem consistência de resultado.",
     transformacao:
-      "Sair do atendimento 1:1 ilimitado e estruturar uma oferta em grupo que sustenta a agenda e o faturamento.",
-    headline: "Pare de vender sua hora. Estruture uma mentoria que vende sozinha.",
-    subtitulo: "Um método simples para consultoras que querem crescer sem se esgotar.",
+      "Sair de campanhas soltas e sem estratégia para uma aquisição de clientes previsível, com metas de custo por resultado acompanhadas de perto.",
+    headline: "Pare de queimar verba em anúncio. Comece a escalar com estratégia.",
+    subtitulo: "Gestão de tráfego pago focada em resultado, não em vaidade.",
   },
 
   oferta: {
-    titulo: "Diagnóstico gratuito de posicionamento (exemplo)",
+    titulo: "Diagnóstico gratuito de campanhas (exemplo)",
     descricao:
-      "Uma conversa de 20 minutos para mapear se sua oferta atual está pronta para escalar. (Conteúdo demonstrativo.)",
+      "Uma análise de 30 minutos das suas campanhas atuais para identificar onde a verba está sendo desperdiçada. (Conteúdo demonstrativo.)",
     ctaPrincipal: {
       id: "cta-diagnostico-gratuito",
       label: "Quero meu diagnóstico gratuito",
       url: "https://example.com/agendar-diagnostico",
       trackingEvent: "cta_principal_click",
-      descricao: "Exemplo: sem compromisso, leva cerca de 20 minutos.",
+      descricao: "Exemplo: sem compromisso, leva cerca de 30 minutos.",
     },
   },
 
   ctasSecundarios: [
     {
-      id: "cta-materia-gratuita",
-      label: "Baixar guia gratuito (exemplo)",
-      url: "https://example.com/guia-gratuito",
+      id: "cta-guia-trafego-pago",
+      label: "Baixar guia gratuito de tráfego pago (exemplo)",
+      url: "https://example.com/guia-trafego-pago",
       trackingEvent: "cta_secundario_guia_click",
       icone: "⬇️",
     },
     {
-      id: "cta-conhecer-metodo",
-      label: "Conhecer o método (exemplo)",
-      url: "https://example.com/metodo",
-      trackingEvent: "cta_secundario_metodo_click",
+      id: "cta-conhecer-metodologia",
+      label: "Conhecer a metodologia (exemplo)",
+      url: "https://example.com/metodologia",
+      trackingEvent: "cta_secundario_metodologia_click",
     },
   ],
 
@@ -89,9 +83,9 @@ export const clientConfig: ClientConfig = {
       id: "prova-depoimento-1",
       tipo: "depoimento",
       autor: "Cliente fictícia A.",
-      papel: "Consultora de carreira (exemplo)",
+      papel: "Dona de e-commerce de moda (exemplo)",
       texto:
-        "Depoimento fictício de demonstração: 'Consegui organizar minha oferta em grupo em poucas semanas.'",
+        "Depoimento fictício de demonstração: 'Triplicamos o faturamento em 3 meses com campanhas mais assertivas.'",
       ehFicticio: true,
     },
     {
@@ -109,20 +103,20 @@ export const clientConfig: ClientConfig = {
 
   tema: {
     corFundo: "#FFFFFF",
-    corSuperficie: "#F5F3FF",
-    corPrimaria: "#7C3AED",
-    corTexto: "#1E1B2E",
-    corTextoSecundario: "#6B7280",
-    raio: "lg",
+    corSuperficie: "#EFF6FF",
+    corPrimaria: "#2563EB",
+    corTexto: "#0F172A",
+    corTextoSecundario: "#64748B",
+    raio: "md",
     estiloBotao: "solid",
     fonteTitulo: "sans",
     fonteCorpo: "sans",
   },
 
   seo: {
-    titulo: "Marina Dantas — Mentoria para consultoras (demonstração)",
+    titulo: "Rafael Andrade — Gestão de Tráfego Pago (demonstração)",
     descricao:
-      "Página de demonstração do Bio que Vende com dados fictícios de uma expert exemplo.",
+      "Página de demonstração do Bio que Vende com dados fictícios de um gestor de tráfego pago exemplo.",
     urlCanonica: "https://exemplo-cliente.vercel.app",
     ogImageUrl: "/images/shared/og-default.png",
     ogImageAlt: "Imagem de demonstração do Bio que Vende",
